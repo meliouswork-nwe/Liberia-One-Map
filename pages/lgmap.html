@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LGMAP — Bomi County Map Viewer | LrOneMap</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+body { display: flex; flex-direction: column; min-height: 100vh; }
+.map-layout { display: flex; flex: 1; max-width: 100%; }
+#map-sidebar {
+  width: 280px; min-width: 260px; background: #fff;
+  border-right: 2px solid var(--navy); overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.map-sidebar-hdr {
+  background: var(--navy); color: #fff; padding: 14px 16px;
+  font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .5px;
+  flex-shrink: 0;
+}
+.layer-group { padding: 12px 14px; border-bottom: 1px solid var(--silver); }
+.layer-group-title {
+  font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 600;
+  color: var(--muted); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 8px;
+}
+.layer-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; cursor: pointer; }
+.layer-row input[type=checkbox] { width: 15px; height: 15px; cursor: pointer; accent-color: var(--navy); }
+.layer-row label { font-size: 13px; color: var(--text); cursor: pointer; flex: 1; }
+.layer-swatch { width: 20px; height: 13px; border-radius: 2px; border: 1px solid rgba(0,0,0,.15); flex-shrink: 0; }
+.layer-line { width: 20px; height: 4px; border-radius: 2px; flex-shrink: 0; }
+.layer-dot  { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; border: 2px solid rgba(0,0,0,.2); }
+#map { flex: 1; min-height: 600px; }
+.map-topbar {
+  background: var(--navy); color: #fff; padding: 10px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: 'Oswald', sans-serif; font-size: 14px; border-bottom: 2px solid var(--gold);
+}
+.map-topbar .title { font-size: 18px; font-weight: 700; letter-spacing: .5px; }
+.map-topbar .subtitle { font-size: 12px; color: rgba(255,255,255,.7); margin-top: 2px; }
+.map-badge { background: var(--gold); color: var(--navy); padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+#loading-overlay {
+  position: absolute; inset: 0; background: rgba(10,35,66,.82);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 9999; color: #fff; gap: 16px;
+}
+#loading-overlay .spinner {
+  width: 44px; height: 44px; border: 4px solid rgba(255,255,255,.2);
+  border-top-color: var(--gold); border-radius: 50%; animation: spin .8s linear infinite;
+}
+#loading-overlay p { font-family: 'Oswald', sans-serif; font-size: 14px; letter-spacing: 1px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.map-stats-bar {
+  background: #f0f4f8; border-top: 1px solid var(--silver);
+  padding: 8px 16px; font-size: 12px; color: var(--muted);
+  display: flex; gap: 24px; flex-wrap: wrap;
+}
+.map-stats-bar span strong { color: var(--navy); }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="map-topbar">
+  <div>
+    <div class="title">🗺 LGMAP — Bomi County Base Map Viewer</div>
+    <div class="subtitle">Liberia OneMap · Pilot GIS Dataset · WGS84 Geographic</div>
+  </div>
+  <div class="map-badge">BOMI COUNTY PILOT</div>
+</div>
+
+<div class="map-layout" style="position:relative;">
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+    <p id="load-msg">Loading map layers…</p>
+  </div>
+
+  <!-- Layer panel -->
+  <div id="map-sidebar">
+    <div class="map-sidebar-hdr">⚙ Layer Control</div>
+
+    <div class="layer-group">
+      <div class="layer-group-title">Base Maps</div>
+      <div class="layer-row"><input type="radio" name="basemap" id="bm-osm" checked/>
+        <label for="bm-osm">OpenStreetMap</label></div>
+      <div class="layer-row"><input type="radio" name="basemap" id="bm-sat"/>
+        <label for="bm-sat">Satellite (ESRI)</label></div>
+      <div class="layer-row"><input type="radio" name="basemap" id="bm-topo"/>
+        <label for="bm-topo">Topographic</label></div>
+      <div class="layer-row"><input type="radio" name="basemap" id="bm-blank"/>
+        <label for="bm-blank">No Base Map</label></div>
+    </div>
+
+    <div class="layer-group">
+      <div class="layer-group-title">Overlay Layers</div>
+      <div class="layer-row">
+        <input type="checkbox" id="lyr-boundary" checked/>
+        <div class="layer-swatch" style="background:none;border:2px solid #c8102e;"></div>
+        <label for="lyr-boundary">PMO Boundary</label>
+      </div>
+      <div class="layer-row">
+        <input type="checkbox" id="lyr-landuse" checked/>
+        <div class="layer-swatch" style="background:#a8d5a2;"></div>
+        <label for="lyr-landuse">Land Use</label>
+      </div>
+      <div class="layer-row">
+        <input type="checkbox" id="lyr-water" checked/>
+        <div class="layer-swatch" style="background:#7ab8d4;"></div>
+        <label for="lyr-water">Water Bodies</label>
+      </div>
+      <div class="layer-row">
+        <input type="checkbox" id="lyr-waterline" checked/>
+        <div class="layer-line" style="background:#3a8fbf;"></div>
+        <label for="lyr-waterline">Rivers &amp; Streams</label>
+      </div>
+      <div class="layer-row">
+        <input type="checkbox" id="lyr-roads" checked/>
+        <div class="layer-line" style="background:#b05000;"></div>
+        <label for="lyr-roads">Roads</label>
+      </div>
+      <div class="layer-row">
+        <input type="checkbox" id="lyr-bldg"/>
+        <div class="layer-swatch" style="background:#d4a76a;"></div>
+        <label for="lyr-bldg">Buildings (zoom ≥13)</label>
+      </div>
+      <div class="layer-row">
+        <input type="checkbox" id="lyr-control" checked/>
+        <div class="layer-dot" style="background:#c8102e;border-color:#8b0000;"></div>
+        <label for="lyr-control">Control Points (BC01–BC04)</label>
+      </div>
+    </div>
+
+    <div class="layer-group">
+      <div class="layer-group-title">Land Use Legend</div>
+      <div class="layer-row" style="cursor:default"><div class="layer-swatch" style="background:#6aaa64;"></div><label style="cursor:default">Forest</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-swatch" style="background:#d4e8a0;"></div><label style="cursor:default">Farmland</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-swatch" style="background:#f5deb3;"></div><label style="cursor:default">Residential</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-swatch" style="background:#c8a0c8;"></div><label style="cursor:default">Commercial</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-swatch" style="background:#b0b0c8;"></div><label style="cursor:default">Industrial</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-swatch" style="background:#90c890;"></div><label style="cursor:default">Park / Scrub</label></div>
+    </div>
+
+    <div class="layer-group">
+      <div class="layer-group-title">Road Classes</div>
+      <div class="layer-row" style="cursor:default"><div class="layer-line" style="background:#c00;height:5px;"></div><label style="cursor:default">Trunk / Primary</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-line" style="background:#e07000;height:4px;"></div><label style="cursor:default">Secondary</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-line" style="background:#e8c000;height:3px;"></div><label style="cursor:default">Tertiary</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-line" style="background:#aaa;height:2px;"></div><label style="cursor:default">Residential / Unclass.</label></div>
+      <div class="layer-row" style="cursor:default"><div class="layer-line" style="background:#ccc;height:2px;border-top:1px dashed #999;"></div><label style="cursor:default">Track / Path</label></div>
+    </div>
+
+    <div class="layer-group" style="margin-top:auto;">
+      <div class="layer-group-title">Dataset Info</div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.6;">
+        Source: OpenStreetMap / Bomi County PMO<br>
+        CRS: WGS84 (EPSG:4326)<br>
+        Boundary: Surveyed + Digitized<br>
+        Date: 2026
+      </p>
+    </div>
+  </div>
+
+  <div id="map"></div>
+</div>
+
+<div class="map-stats-bar">
+  <span>Buildings: <strong>27,897</strong></span>
+  <span>Roads: <strong>2,449</strong></span>
+  <span>Waterlines: <strong>201</strong></span>
+  <span>Water Bodies: <strong>37</strong></span>
+  <span>Land Use Polygons: <strong>1,195</strong></span>
+  <span>Control Points: <strong>4 (BC01–BC04)</strong></span>
+  <span id="map-zoom-info" style="margin-left:auto;color:var(--navy);font-weight:600;"></span>
+</div>
+
+<div id="site-footer"></div>
+<script src="../js/shared.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+injectHeader('..'); injectFooter('..');
+
+// ── Base layers ────────────────────────────────────────────────────────────
+const osm  = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM',maxZoom:19});
+const sat  = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{attribution:'© Esri',maxZoom:19});
+const topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{attribution:'© OpenTopoMap',maxZoom:17});
+const blank= L.tileLayer('');
+
+const map = L.map('map',{center:[6.75,-10.78],zoom:10,layers:[osm]});
+
+// Zoom info
+map.on('zoomend',()=>{
+  document.getElementById('map-zoom-info').textContent = `Zoom: ${map.getZoom()}`;
+});
+document.getElementById('map-zoom-info').textContent = `Zoom: ${map.getZoom()}`;
+
+// Base map toggle
+document.getElementById('bm-osm').addEventListener('change',()=>{map.removeLayer(sat);map.removeLayer(topo);map.removeLayer(blank);map.addLayer(osm);});
+document.getElementById('bm-sat').addEventListener('change',()=>{map.removeLayer(osm);map.removeLayer(topo);map.removeLayer(blank);map.addLayer(sat);});
+document.getElementById('bm-topo').addEventListener('change',()=>{map.removeLayer(osm);map.removeLayer(sat);map.removeLayer(blank);map.addLayer(topo);});
+document.getElementById('bm-blank').addEventListener('change',()=>{map.removeLayer(osm);map.removeLayer(sat);map.removeLayer(topo);map.addLayer(blank);});
+
+// ── Layer styling helpers ──────────────────────────────────────────────────
+const LANDUSE_COLORS = {
+  forest:'#6aaa64', farmland:'#d4e8a0', farmyard:'#ede0b0',
+  residential:'#f5deb3', commercial:'#c8a0c8', industrial:'#b0b0c8',
+  park:'#90c890', scrub:'#b8d898', orchard:'#a0c870', quarry:'#c8b090'
+};
+const ROAD_STYLES = {
+  trunk:     {color:'#cc0000',weight:4},
+  primary:   {color:'#cc2200',weight:3.5},
+  secondary: {color:'#e07000',weight:2.5},
+  tertiary:  {color:'#e8c000',weight:2},
+  residential:{color:'#aaaaaa',weight:1.5},
+  unclassified:{color:'#aaaaaa',weight:1.5},
+  service:   {color:'#cccccc',weight:1},
+  track:     {color:'#bbbbbb',weight:1,dashArray:'5,4'},
+  track_grade4:{color:'#cccccc',weight:1,dashArray:'4,4'},
+  track_grade5:{color:'#dddddd',weight:1,dashArray:'3,5'},
+  path:      {color:'#ddaaaa',weight:1,dashArray:'3,4'},
+  steps:     {color:'#ffaaaa',weight:1}
+};
+
+// ── GeoJSON layers ─────────────────────────────────────────────────────────
+let layers = {};
+let bldgLayer = null;
+
+async function loadJSON(url, msg) {
+  document.getElementById('load-msg').textContent = msg;
+  const r = await fetch(url);
+  return r.json();
+}
+
+async function initLayers() {
+  // Boundary
+  const bdyData = await loadJSON('../data/boundary.geojson','Loading boundary…');
+  layers.boundary = L.geoJSON(bdyData,{
+    style:{color:'#c8102e',weight:3,fill:false,dashArray:'8,4'}
+  }).addTo(map);
+  map.fitBounds(layers.boundary.getBounds().pad(0.05));
+
+  // Land use
+  const luData = await loadJSON('../data/landuse.geojson','Loading land use…');
+  layers.landuse = L.geoJSON(luData,{
+    style: f=>({
+      fillColor: LANDUSE_COLORS[f.properties.fclass]||'#cccccc',
+      fillOpacity:.55, color:'rgba(0,0,0,0.12)', weight:.4
+    }),
+    onEachFeature:(f,layer)=>{
+      const p=f.properties;
+      layer.bindPopup(`<b>${p.fclass||'Land Use'}</b>${p.name?'<br>'+p.name:''}`);
+    }
+  }).addTo(map);
+
+  // Water polygons
+  const waterData = await loadJSON('../data/water.geojson','Loading water bodies…');
+  layers.water = L.geoJSON(waterData,{
+    style:{fillColor:'#7ab8d4',fillOpacity:.65,color:'#3a8fbf',weight:.8},
+    onEachFeature:(f,layer)=>{layer.bindPopup(`<b>Water Body</b>${f.properties.name?'<br>'+f.properties.name:''}`)}
+  }).addTo(map);
+
+  // Waterlines
+  const wlData = await loadJSON('../data/waterline.geojson','Loading rivers…');
+  layers.waterline = L.geoJSON(wlData,{
+    style: f=>({
+      color: f.properties.fclass==='river'?'#2878a8':'#5a9fc8',
+      weight: f.properties.fclass==='river'?2.5:1.2, opacity:.8
+    }),
+    onEachFeature:(f,layer)=>{layer.bindPopup(`<b>${f.properties.fclass||'Waterway'}</b>${f.properties.name?'<br>'+f.properties.name:''}`)}
+  }).addTo(map);
+
+  // Roads
+  const roadData = await loadJSON('../data/roads.geojson','Loading roads…');
+  layers.roads = L.geoJSON(roadData,{
+    style: f=>{const s=ROAD_STYLES[f.properties.fclass]||{color:'#aaa',weight:1};return{...s,opacity:.9};},
+    onEachFeature:(f,layer)=>{
+      const p=f.properties;
+      layer.bindPopup(`<b>${p.name||'Road'}</b><br>Class: ${p.fclass||'—'}<br>Ref: ${p.ref||'—'}`);
+    }
+  }).addTo(map);
+
+  // Control points
+  const ctrlData = await loadJSON('../data/control.geojson','Loading control points…');
+  const ctrlNames=['BC01','BC02','BC03','BC04'];
+  layers.control = L.geoJSON(ctrlData,{
+    pointToLayer:(f,latlng)=>{
+      const nm=f.properties.NAME||'';
+      return L.marker(latlng,{
+        icon: L.divIcon({
+          html:`<div style="background:#c8102e;color:#fff;font-family:Oswald,sans-serif;font-size:10px;font-weight:700;padding:2px 5px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.4);white-space:nowrap">${nm}</div>`,
+          className:'', iconAnchor:[20,10]
+        })
+      });
+    },
+    onEachFeature:(f,layer)=>{
+      const p=f.properties;
+      const c=f.geometry.coordinates;
+      layer.bindPopup(`<b>${p.NAME}</b><br>Survey Control Point<br>Lon: ${c[0].toFixed(5)}°<br>Lat: ${c[1].toFixed(5)}°`,{maxWidth:200});
+    }
+  }).addTo(map);
+
+  // Buildings (lazy — only add when zoom >= 13, and only if checkbox is checked)
+  const bldgData = await loadJSON('../data/bldg.geojson','Loading buildings…');
+  bldgLayer = L.geoJSON(bldgData,{
+    style:{fillColor:'#d4a76a',fillOpacity:.7,color:'#a07040',weight:.4},
+    onEachFeature:(f,layer)=>{
+      const p=f.properties;
+      layer.bindPopup(`<b>${p.name||'Building'}</b><br>${p.fclass||''}`);
+    }
+  });
+
+  // Hide loading overlay
+  document.getElementById('loading-overlay').style.display='none';
+
+  // Hook building visibility to zoom + checkbox
+  function updateBldg() {
+    const checked = document.getElementById('lyr-bldg').checked;
+    if(checked && map.getZoom()>=13) {
+      if(!map.hasLayer(bldgLayer)) map.addLayer(bldgLayer);
+    } else {
+      if(map.hasLayer(bldgLayer)) map.removeLayer(bldgLayer);
+    }
+  }
+  map.on('zoomend', updateBldg);
+  document.getElementById('lyr-bldg').addEventListener('change', updateBldg);
+}
+
+// ── Layer toggle checkboxes ────────────────────────────────────────────────
+function wireToggle(id, layerKey) {
+  document.getElementById(id).addEventListener('change', function(){
+    if(!layers[layerKey]) return;
+    if(this.checked) map.addLayer(layers[layerKey]);
+    else map.removeLayer(layers[layerKey]);
+  });
+}
+// Wire after layers loaded
+setTimeout(()=>{
+  wireToggle('lyr-boundary','boundary');
+  wireToggle('lyr-landuse','landuse');
+  wireToggle('lyr-water','water');
+  wireToggle('lyr-waterline','waterline');
+  wireToggle('lyr-roads','roads');
+  wireToggle('lyr-control','control');
+},100);
+
+// Scale bar
+L.control.scale({metric:true,imperial:false,position:'bottomright'}).addTo(map);
+
+// Start loading
+initLayers().catch(console.error);
+</script>
+</body>
+</html>

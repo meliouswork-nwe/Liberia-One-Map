@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LGREF — Geodetic Control Monuments | LrOneMap</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+#lgref-map { width:100%; height:480px; border:2px solid var(--navy); }
+.mon-table-wrap { overflow-x:auto; margin-top:28px; }
+.filter-bar { display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap; align-items:center; }
+.filter-bar input, .filter-bar select {
+  padding:7px 12px; border:1px solid var(--silver); font-family:'Source Sans 3',sans-serif;
+  font-size:13px; color:var(--text); outline:none;
+}
+.filter-bar input:focus, .filter-bar select:focus { border-color:var(--navy); }
+.cors-row { background:#fffbe6 !important; }
+#mon-count { font-size:13px; color:var(--muted); margin-left:auto; }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-icon">📍</div>
+    <div>
+      <div class="acronym-badge">LGREF</div>
+      <h1>Liberia Geospatial Reference System</h1>
+      <p>27 geodetic control monuments from the Liberia Infrastructure Data Portal (LIDP) — the first publicly accessible national geodetic monument database in Liberia's history. Source: LGREF-LIDP-2026-001.</p>
+    </div>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <div class="two-col">
+    <div>
+      <!-- Map -->
+      <h2 class="section-hd">Monument Map Viewer</h2>
+      <div id="lgref-map"></div>
+
+      <!-- Table -->
+      <div class="mon-table-wrap">
+        <h2 class="section-hd" style="margin-top:32px;">Complete Monument Listing</h2>
+        <div class="filter-bar">
+          <input type="text" id="search-input" placeholder="Search ID, county, monument…" style="min-width:220px;"/>
+          <select id="county-filter"><option value="">All Counties</option></select>
+          <span id="mon-count"></span>
+        </div>
+        <table class="data-table" id="mon-table">
+          <thead>
+            <tr>
+              <th>ID</th><th>County</th><th>Town</th><th>Monument</th>
+              <th>Lat (DD)</th><th>Lon (DD)</th><th>Height (m)</th><th>Plus Code</th>
+            </tr>
+          </thead>
+          <tbody id="mon-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <aside>
+      <div class="sidebar-card"><div class="sidebar-card-hdr">📊 Network Statistics</div><div class="sidebar-card-body">
+        <div class="stat-row"><span class="label">Total Monuments</span><span class="val">27</span></div>
+        <div class="stat-row"><span class="label">Counties Covered</span><span class="val">11/15</span></div>
+        <div class="stat-row"><span class="label">CORS Stations</span><span class="val">1</span></div>
+        <div class="stat-row"><span class="label">Datum</span><span class="val">WGS84</span></div>
+        <div class="stat-row"><span class="label">Projection</span><span class="val">TM / LGR</span></div>
+        <div class="stat-row"><span class="label">Height Range</span><span class="val">1.9–544 m</span></div>
+      </div></div>
+
+      <div class="sidebar-card" style="border-top:3px solid var(--gold)"><div class="sidebar-card-hdr" style="background:var(--gold);color:var(--navy);">⭐ LLA-CORS Anchor</div><div class="sidebar-card-body">
+        <p><strong>ID 31 — Fendell Campus, Montserrado</strong></p>
+        <p>The LLA Continuously Operating Reference Station — primary anchor of the Liberia Geodetic Reference Frame (LGR). First confirmed operational CORS in Liberia.</p>
+        <div class="stat-row"><span class="label">Lat</span><span class="val" style="font-size:14px">6.380694°N</span></div>
+        <div class="stat-row"><span class="label">Lon</span><span class="val" style="font-size:14px">10.619145°W</span></div>
+        <div class="stat-row"><span class="label">Height</span><span class="val" style="font-size:14px">30.58 m</span></div>
+      </div></div>
+
+      <div class="sidebar-card"><div class="sidebar-card-hdr">⬇ Downloads</div><div class="sidebar-card-body">
+        <p>All 27 monuments in GIS formats:</p>
+        <a href="../data/control.geojson" download class="btn btn-primary" style="display:block;text-align:center;padding:10px;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;background:var(--navy);color:#fff;margin-bottom:8px;">GeoJSON</a>
+        <p style="font-size:12px;color:var(--muted);margin-top:8px;">Shapefile and KMZ available via the LGDI Data Catalog.</p>
+      </div></div>
+
+      <div class="sidebar-card"><div class="sidebar-card-hdr">🗂 Coverage Gaps</div><div class="sidebar-card-body">
+        <p>Counties without monuments:</p>
+        <ul style="padding-left:16px;margin-top:8px;">
+          <li style="font-size:13px;color:var(--muted);line-height:1.8;">Maryland</li>
+          <li style="font-size:13px;color:var(--muted);line-height:1.8;">Grand Kru</li>
+          <li style="font-size:13px;color:var(--muted);line-height:1.8;">Gbarpolu</li>
+          <li style="font-size:13px;color:var(--muted);line-height:1.8;">Grand Gedeh</li>
+        </ul>
+      </div></div>
+    </aside>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="../js/shared.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+injectHeader('..'); injectFooter('..');
+
+const MONUMENTS = [
+  {id:13,county:"Cape Mount",  town:"Bo Waterside",   name:"Mano River Bridge",       lat:7.012164, lon:-11.375083, ht:10.0815,  plus:"6CVC2J6F+VX7",cors:false},
+  {id:14,county:"Nimba",       town:"Tapita",         name:"Memorial High School",     lat:6.500452, lon:-8.860726,  ht:253.1554, plus:"6CRHG42Q+5PJ",cors:false},
+  {id:15,county:"Gedeh",       town:"Zwedru",         name:"Admin Building",           lat:6.060866, lon:-8.133817,  ht:208.1135, plus:"6CRH3V68+8FV",cors:false},
+  {id:16,county:"River Gee",   town:"Krohnwodoke",    name:"Cell Tower",               lat:4.867417, lon:-7.618980,  ht:133.8782, plus:"6CPJV98J+XC6",cors:false},
+  {id:17,county:"Bong",        town:"Gbarnga",        name:"Admin Building",           lat:7.001247, lon:-9.472037,  ht:246.3453, plus:"6CVG2G2H+F5W",cors:false},
+  {id:18,county:"Bomi",        town:"(no town)",      name:"Weasua Hospital",          lat:7.318945, lon:-10.506599, ht:164.3097, plus:"6CVF8F9V+H9C",cors:false},
+  {id:19,county:"Grand Bassa", town:"Buchanan",       name:"Admin Building",           lat:5.885525, lon:-10.036174, ht:12.019,   plus:"6CQFVXP7+6G4",cors:false},
+  {id:20,county:"Margibi",     town:"(no town)",      name:"(not encoded)",            lat:6.534476, lon:-10.343958, ht:92.6355,  plus:"6CRFGMM4+QCV",cors:false},
+  {id:21,county:"Lofa",        town:"Kialima",        name:"Doba Junction",            lat:8.449814, lon:-10.250732, ht:488.3125, plus:"6CWFCPXX+WPC",cors:false},
+  {id:22,county:"Lofa",        town:"Vonjima",        name:"Admin Building",           lat:8.420113, lon:-9.750130,  ht:543.9268, plus:"6CWGC6CX+2WX",cors:false},
+  {id:23,county:"Nimba",       town:"Sanniquellie",   name:"Nimba University",         lat:7.352733, lon:-8.716796,  ht:442.0103, plus:"6CVH973M+37W",cors:false},
+  {id:24,county:"Sinoe",       town:"Greenville",     name:"(not encoded)",            lat:5.024643, lon:-9.050131,  ht:8.0447,   plus:"6CQG2WFX+VW5",cors:false},
+  {id:25,county:"Bomi",        town:"Tubmanburg",     name:"Dewey High School",        lat:6.866848, lon:-10.827710, ht:69.9838,  plus:"6CRFV58C+PWM",cors:false},
+  {id:31,county:"Montserrado", town:"Fendell Campus", name:"LLA-CORS Station",         lat:6.380694, lon:-10.619145, ht:30.5818,  plus:"6CRF99JJ+78H",cors:true},
+  {id:32,county:"Montserrado", town:"Monrovia",       name:"Masonic Temple",           lat:6.318398, lon:-10.814002, ht:65.7774,  plus:"6CRF859P+995",cors:false},
+  {id:33,county:"Montserrado", town:"Monrovia",       name:"NPA Junction",             lat:6.337619, lon:-10.792681, ht:1.9082,   plus:"6CRF86Q4+2WW",cors:false},
+  {id:34,county:"Montserrado", town:"Duala",          name:"St. Paul Bridge",          lat:6.393557, lon:-10.783220, ht:7.0226,   plus:"6CRF96V8+CPC",cors:false},
+  {id:35,county:"Montserrado", town:"Barnesville",    name:"Sports Field",             lat:6.359631, lon:-10.740872, ht:4.0371,   plus:"6CRF9755+VM2",cors:false},
+  {id:36,county:"Montserrado", town:"(no town)",      name:"Omega Tower",              lat:6.310163, lon:-10.657628, ht:5.3821,   plus:"6CRF886R+3W9",cors:false},
+  {id:37,county:"Montserrado", town:"Old Congo Town", name:"Ministry of Health",       lat:6.263015, lon:-10.714996, ht:18.7943,  plus:"6CRF777P+622",cors:false},
+  {id:38,county:"Montserrado", town:"Monrovia",       name:"Wells Hairston HS",        lat:6.315017, lon:-10.809737, ht:10.1099,  plus:"6CRF858R+242",cors:false},
+  {id:39,county:"Montserrado", town:"Sinkor",         name:"Tubman High School",       lat:6.297633, lon:-10.781405, ht:8.3957,   plus:"6CRF76X9+3C5",cors:false},
+  {id:40,county:"Montserrado", town:"Monrovia",       name:"Ministry Mines & Energy",  lat:6.304553, lon:-10.798046, ht:9.6232,   plus:"6CRF8632+RQG",cors:false},
+  {id:41,county:"Montserrado", town:"Dixville",       name:"Town Hall",                lat:6.374989, lon:-10.740174, ht:11.3934,  plus:"6CRF97F5+XWW",cors:false},
+  {id:42,county:"Montserrado", town:"Fendell",        name:"Oscar Road",               lat:6.379601, lon:-10.617087, ht:21.4643,  plus:"6CRF99HM+R5V",cors:false},
+  {id:43,county:"Montserrado", town:"Brewersville",   name:"Town Hall",                lat:6.425548, lon:-10.784282, ht:16.4127,  plus:"6CRFC6G8+678",cors:false},
+  {id:44,county:"Montserrado", town:"Johnsonville",   name:"Police Station",           lat:6.363954, lon:-10.686546, ht:16.3140,  plus:"6CRF9877+H9P",cors:false},
+];
+
+// Map
+const map = L.map('lgref-map',{center:[6.5,-9.5],zoom:7});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(map);
+
+MONUMENTS.forEach(m=>{
+  const icon = m.cors
+    ? L.divIcon({html:`<div style="background:#c9a84c;color:#0a2342;font-family:Oswald,sans-serif;font-size:9px;font-weight:700;padding:3px 6px;border:2px solid #0a2342;box-shadow:0 2px 6px rgba(0,0,0,.4);white-space:nowrap">⭐ ID ${m.id}</div>`,className:'',iconAnchor:[28,12]})
+    : L.divIcon({html:`<div style="width:11px;height:11px;background:#0a2342;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 5px rgba(0,0,0,.4)"></div>`,className:'',iconAnchor:[5,5]});
+  const corsTag = m.cors ? '<br><strong style="color:#c9a84c">⭐ LLA-CORS ANCHOR</strong>' : '';
+  L.marker([m.lat,m.lon],{icon})
+    .bindPopup(`<b>ID ${m.id} — ${m.name}</b>${corsTag}<br><span style="color:#666">${m.county} · ${m.town}</span><br>Lat: ${m.lat.toFixed(6)}°N<br>Lon: ${Math.abs(m.lon).toFixed(6)}°W<br>Height: ${m.ht.toFixed(4)} m<br><small>Plus Code: ${m.plus}</small>`,{maxWidth:240})
+    .addTo(map);
+});
+L.control.scale({metric:true,imperial:false}).addTo(map);
+
+// Table
+const tbody = document.getElementById('mon-tbody');
+const counties = [...new Set(MONUMENTS.map(m=>m.county))].sort();
+const sel = document.getElementById('county-filter');
+counties.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
+
+function renderTable(data) {
+  tbody.innerHTML = data.map(m=>`
+    <tr class="${m.cors?'cors-row':''}">
+      <td>${m.id}${m.cors?' ⭐':''}</td>
+      <td>${m.county}</td><td>${m.town}</td><td>${m.name}</td>
+      <td>${m.lat.toFixed(6)}</td><td>${m.lon.toFixed(6)}</td>
+      <td>${m.ht.toFixed(4)}</td><td style="font-size:11px">${m.plus}</td>
+    </tr>`).join('');
+  document.getElementById('mon-count').textContent = `Showing ${data.length} of ${MONUMENTS.length} monuments`;
+}
+renderTable(MONUMENTS);
+
+function filterTable() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const c = document.getElementById('county-filter').value;
+  const filtered = MONUMENTS.filter(m=>{
+    const matchQ = !q || [m.id,m.county,m.town,m.name,m.plus].join(' ').toLowerCase().includes(q);
+    const matchC = !c || m.county===c;
+    return matchQ && matchC;
+  });
+  renderTable(filtered);
+}
+document.getElementById('search-input').addEventListener('input',filterTable);
+document.getElementById('county-filter').addEventListener('change',filterTable);
+</script>
+</body>
+</html>

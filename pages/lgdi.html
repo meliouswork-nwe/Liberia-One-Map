@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LGDI — Data Infrastructure | LrOneMap</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-icon">🏛️</div>
+    <div><div class="acronym-badge">LGDI</div>
+      <h1>Liberia Geospatial Data Infrastructure</h1>
+      <p>The national framework for spatial data standards, metadata, interoperability, and open data access — the backbone of the Liberia OneMap initiative.</p>
+    </div>
+  </div>
+</div>
+<div class="content-wrap">
+  <div class="two-col">
+    <div>
+      <h2 class="section-hd">Recommended Technology Stack</h2>
+      <table class="data-table" style="margin-bottom:32px;">
+        <thead><tr><th>Layer</th><th>Technology</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Web Portal</td><td>GeoNode</td><td><span class="badge green">Open Source</span></td><td>Django-based; built-in metadata, user management, OGC services</td></tr>
+          <tr><td>Map Server</td><td>GeoServer</td><td><span class="badge green">Open Source</span></td><td>Industry-standard WMS/WFS/WCS; integrates with GeoNode</td></tr>
+          <tr><td>Database</td><td>PostgreSQL / PostGIS</td><td><span class="badge green">Open Source</span></td><td>Enterprise spatial database; OGC-compliant geometry</td></tr>
+          <tr><td>Frontend</td><td>Leaflet.js + MapStore2</td><td><span class="badge green">Open Source</span></td><td>Mobile-friendly; layer switcher &amp; print tools</td></tr>
+          <tr><td>3D Terrain</td><td>CesiumJS</td><td><span class="badge red">Recommended</span></td><td>Globe-based 3D viewer for LiDAR/DEM; free for open data</td></tr>
+          <tr><td>Metadata</td><td>ISO 19115 / pycsw</td><td><span class="badge red">Recommended</span></td><td>International standard; OGC CSW catalog endpoint</td></tr>
+          <tr><td>Hosting</td><td>AWS Lightsail / DigitalOcean</td><td><span class="badge red">Recommended</span></td><td>$20–40/mo managed VPS; CDN-ready; scalable</td></tr>
+          <tr><td>Domain</td><td>LrOneMap.com + LrOneMap.lr</td><td><span class="badge gold">Target</span></td><td>Register .lr ccTLD in parallel for official GOL identity</td></tr>
+        </tbody>
+      </table>
+      <h2 class="section-hd">Standards &amp; Interoperability</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;">
+        <div class="card"><h3>ISO 19115 Metadata</h3><p>All datasets catalogued with ISO 19115 geographic metadata standard — enabling discovery by international spatial data clearinghouses including AfriGEOSS and GSDI.</p></div>
+        <div class="card"><h3>OGC Web Services</h3><p>WMS (map visualization), WFS (feature download), WCS (raster coverage), and CSW (catalog search) endpoints for every published dataset.</p></div>
+        <div class="card"><h3>EPSG / CRS Registry</h3><p>Formal EPSG registration of the LGR projected coordinate system recommended to ensure interoperability with QGIS, ArcGIS, and global GIS platforms.</p></div>
+        <div class="card"><h3>Open Data Licensing</h3><p>All LGDI datasets published under Creative Commons Attribution (CC-BY 4.0) or equivalent open license — enabling free use by NGOs, researchers, and private sector.</p></div>
+      </div>
+    </div>
+    <aside>
+      <div class="sidebar-card"><div class="sidebar-card-hdr">📁 Dataset Catalog</div><div class="sidebar-card-body">
+        <div class="stat-row"><span class="label">Geodetic Monuments</span><span class="val">27</span></div>
+        <div class="stat-row"><span class="label">Bomi Buildings</span><span class="val">27,897</span></div>
+        <div class="stat-row"><span class="label">Road Segments</span><span class="val">2,449</span></div>
+        <div class="stat-row"><span class="label">Waterline Features</span><span class="val">201</span></div>
+        <div class="stat-row"><span class="label">Land Use Polygons</span><span class="val">1,195</span></div>
+        <div class="stat-row"><span class="label">Water Bodies</span><span class="val">37</span></div>
+      </div></div>
+      <div class="sidebar-card"><div class="sidebar-card-hdr">🏗 Gaps &amp; Priorities</div><div class="sidebar-card-body">
+        <ul style="padding-left:16px;">
+          <li style="font-size:13px;color:var(--muted);line-height:1.8">4 counties without geodetic monuments</li>
+          <li style="font-size:13px;color:var(--muted);line-height:1.8">LiDAR / DEM coverage not yet online</li>
+          <li style="font-size:13px;color:var(--muted);line-height:1.8">Satellite imagery WMS pending</li>
+          <li style="font-size:13px;color:var(--muted);line-height:1.8">Formal LGR datum parameters unpublished</li>
+          <li style="font-size:13px;color:var(--muted);line-height:1.8">GPS accuracy metadata not yet available</li>
+        </ul>
+      </div></div>
+    </aside>
+  </div>
+</div>
+<div id="site-footer"></div>
+<script src="../js/shared.js"></script>
+<script>injectHeader('..');injectFooter('..');</script>
+</body></html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Liberia OneMap — LrOneMap.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.hero{position:relative;width:100%;height:390px;overflow:hidden;border-bottom:4px solid var(--navy);}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,35,66,.68) 0%,rgba(10,35,66,.18) 42%,rgba(10,35,66,.08) 65%,rgba(10,35,66,.45) 100%),url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1400&q=80') center/cover no-repeat;background-color:#0a4a6e;}
+.hero-stripe{position:absolute;left:0;top:0;bottom:0;width:9px;background:repeating-linear-gradient(to bottom,var(--red) 0,var(--red) 28px,#fff 28px,#fff 56px);opacity:.85;}
+.hero-emblem{position:absolute;left:36px;top:50%;transform:translateY(-50%);width:150px;height:150px;opacity:.85;filter:drop-shadow(0 4px 16px rgba(0,0,0,.5));}
+.hero-mission{position:absolute;right:48px;bottom:48px;background:rgba(10,35,66,.84);border-left:4px solid var(--gold);color:#fff;padding:20px 28px;max-width:340px;backdrop-filter:blur(4px);}
+.hero-mission h2{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;color:var(--gold);margin-bottom:8px;}
+.hero-mission p{font-size:14px;line-height:1.55;color:rgba(255,255,255,.9);}
+.hero-chips{position:absolute;bottom:20px;left:210px;display:flex;gap:10px;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 13px;font-size:11.5px;font-family:'Oswald',sans-serif;letter-spacing:.8px;backdrop-filter:blur(3px);}
+.tiles-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.tile{position:relative;height:200px;overflow:hidden;cursor:pointer;border-right:1px solid rgba(255,255,255,.3);}
+.tile:last-child{border-right:none;}
+.tile-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .45s;filter:brightness(.75);}
+.tile:hover .tile-bg{transform:scale(1.07);filter:brightness(.55);}
+.tile-ov{position:absolute;inset:0;opacity:.42;transition:opacity .3s;}
+.tile:hover .tile-ov{opacity:.62;}
+.tile[data-c="navy"] .tile-ov{background:var(--navy);}
+.tile[data-c="red"] .tile-ov{background:var(--red);}
+.tile[data-c="teal"] .tile-ov{background:#0a5c5c;}
+.tile[data-c="forest"] .tile-ov{background:#1a4a1a;}
+.tile-lbl{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;transition:opacity .3s;}
+.tile-lbl .ac{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;letter-spacing:2px;display:block;}
+.tile-lbl .fn{font-size:11.5px;color:rgba(255,255,255,.8);display:block;margin-top:2px;}
+.tile-tip{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:20px;opacity:0;transform:translateY(8px);transition:opacity .32s,transform .32s;pointer-events:none;}
+.tile:hover .tile-tip{opacity:1;transform:translateY(0);}
+.tile:hover .tile-lbl{opacity:0;}
+.tile-tip .ic{font-size:30px;margin-bottom:8px;}
+.tile-tip .tt{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:1px;}
+.tile-tip p{font-size:13px;line-height:1.5;margin-top:6px;color:rgba(255,255,255,.9);}
+.main-wrap{max-width:1280px;margin:0 auto;padding:40px 28px 60px;display:grid;grid-template-columns:1fr 320px;gap:36px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:36px;}
+.phases{display:flex;gap:0;margin-bottom:36px;}
+.phase{flex:1;padding:18px 20px;border:1px solid var(--silver);border-right:none;background:#fff;}
+.phase:last-child{border-right:1px solid var(--silver);}
+.phase-num{font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;color:var(--silver);line-height:1;margin-bottom:6px;}
+.phase h4{font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--navy);letter-spacing:.5px;margin-bottom:8px;text-transform:uppercase;}
+.phase ul{padding-left:16px;}.phase ul li{font-size:12.5px;color:var(--muted);line-height:1.6;}
+.phase.active{border-top:3px solid var(--red);padding-top:15px;}
+.partners-strip{background:#fff;border-top:2px solid var(--silver);padding:22px 28px;}
+.partner-logos{max-width:1280px;margin:0 auto;}
+.partner-logos h4{font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.logos-row{display:flex;gap:20px;flex-wrap:wrap;align-items:center;}
+.pbox{border:1px solid var(--silver);padding:7px 16px;font-family:'Oswald',sans-serif;font-size:12.5px;font-weight:600;color:var(--navy);letter-spacing:1px;background:#f8fafd;}
+.news-item{padding:10px 0;border-bottom:1px solid var(--silver);}
+.news-item:last-child{border-bottom:none;}
+.news-date{font-size:11px;color:var(--red);font-weight:700;letter-spacing:.5px;font-family:'Oswald',sans-serif;margin-bottom:3px;}
+.news-item p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+@media(max-width:900px){.main-wrap{grid-template-columns:1fr;}.about-grid{grid-template-columns:1fr;}.phases{flex-direction:column;}.tile-lbl .ac{font-size:18px;}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  <svg class="hero-emblem" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+    <defs><path id="ctp" d="M75,75 m-56,0 a56,56 0 1,1 112,0 a56,56 0 1,1 -112,0"/></defs>
+    <circle cx="75" cy="75" r="70" fill="rgba(10,35,66,0.75)" stroke="#c9a84c" stroke-width="3"/>
+    <circle cx="75" cy="75" r="58" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+    <ellipse cx="75" cy="75" rx="38" ry="38" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+    <ellipse cx="75" cy="75" rx="38" ry="15" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+    <line x1="37" y1="75" x2="113" y2="75" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+    <line x1="75" y1="37" x2="75" y2="113" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+    <polygon points="75,52 77.5,61 87,61 79.5,66.5 82,76 75,71 68,76 70.5,66.5 63,61 72.5,61" fill="#c8102e"/>
+    <text font-family="Oswald,sans-serif" font-size="9.5" font-weight="600" fill="#c9a84c" letter-spacing="2.5"><textPath href="#ctp" startOffset="1%">LIBERIA  ONEMAP  ·  NATIONAL  SPATIAL  DATA  ·  </textPath></text>
+    <circle cx="75" cy="5" r="3" fill="#c8102e"/><circle cx="145" cy="75" r="3" fill="#c8102e"/>
+    <circle cx="75" cy="145" r="3" fill="#c8102e"/><circle cx="5" cy="75" r="3" fill="#c8102e"/>
+  </svg>
+  <div class="hero-mission">
+    <h2>Our Mission:</h2>
+    <p>To build a unified, open, and authoritative national spatial data infrastructure — catapulting Liberia into the modern geospatial future.</p>
+  </div>
+  <div class="hero-chips">
+    <div class="chip">27 Geodetic Monuments</div>
+    <div class="chip">15 Counties</div>
+    <div class="chip">Bomi Pilot Data</div>
+    <div class="chip">WGS84 · LGR</div>
+  </div>
+</section>
+
+<!-- PROGRAM TILES -->
+<div class="tiles-grid">
+  <div class="tile" data-c="navy"><div class="tile-bg" style="background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=70')"></div><div class="tile-ov"></div>
+    <div class="tile-lbl"><span class="ac">LGREF</span><span class="fn">Liberia Geospatial Reference System</span></div>
+    <div class="tile-tip"><div class="ic">📍</div><div class="tt">LGREF</div><p>National geodetic control point network · LLA-CORS · WGS84 / LGR datum framework</p><a href="pages/lgref.html" style="color:var(--gold);font-family:Oswald,sans-serif;font-size:12px;margin-top:10px;letter-spacing:1px">EXPLORE →</a></div>
+  </div>
+  <div class="tile" data-c="forest"><div class="tile-bg" style="background-image:url('https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&q=70')"></div><div class="tile-ov"></div>
+    <div class="tile-lbl"><span class="ac">LGMAP</span><span class="fn">Liberia Base Mapping Program</span></div>
+    <div class="tile-tip"><div class="ic">🗺️</div><div class="tt">LGMAP</div><p>Bomi County pilot · Roads · Buildings · Waterways · Land use · Administrative boundary</p><a href="pages/lgmap.html" style="color:var(--gold);font-family:Oswald,sans-serif;font-size:12px;margin-top:10px;letter-spacing:1px">EXPLORE →</a></div>
+  </div>
+  <div class="tile" data-c="teal"><div class="tile-bg" style="background-image:url('https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=600&q=70')"></div><div class="tile-ov"></div>
+    <div class="tile-lbl"><span class="ac">LGDI</span><span class="fn">Liberia Geospatial Data Infrastructure</span></div>
+    <div class="tile-tip"><div class="ic">🏛️</div><div class="tt">LGDI</div><p>National spatial data infrastructure · Standards · ISO 19115 metadata · GeoNode portal</p><a href="pages/lgdi.html" style="color:var(--gold);font-family:Oswald,sans-serif;font-size:12px;margin-top:10px;letter-spacing:1px">EXPLORE →</a></div>
+  </div>
+  <div class="tile" data-c="red"><div class="tile-bg" style="background-image:url('https://images.unsplash.com/photo-1509610973090-e8d3e2440ed1?w=600&q=70')"></div><div class="tile-ov"></div>
+    <div class="tile-lbl"><span class="ac">GITA</span><span class="fn">Geospatial IT &amp; Application Center · UL</span></div>
+    <div class="tile-tip"><div class="ic">🎓</div><div class="tt">GITA Center</div><p>University of Liberia · GIS education &amp; research · Capacity building</p><a href="pages/gita.html" style="color:var(--gold);font-family:Oswald,sans-serif;font-size:12px;margin-top:10px;letter-spacing:1px">EXPLORE →</a></div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-wrap">
+  <div>
+    <h2 class="section-hd">About Liberia OneMap</h2>
+    <div class="about-grid">
+      <div class="card"><h3>What is OneMap?</h3><p>The Liberia OneMap is a Demonstration Operational Prototype (DOP) for a unified national web portal integrating open geodetic control data, LiDAR/DEM terrain, satellite imagery, and planimetric GIS layers under a single authoritative interface.</p></div>
+      <div class="card"><h3>Purpose &amp; Audience</h3><p>Designed for donor presentations, government stakeholder demonstrations, and pre-investment showcasing. Serves as a proof-of-concept for the national Liberia Geospatial Data Infrastructure (LGDI).</p></div>
+      <div class="card"><h3>Bomi County Pilot Data</h3><p>27,897 buildings · 2,449 road segments · 201 waterline features · 37 water bodies · 1,195 land-use polygons · County boundary · 4 geodetic control monuments.</p></div>
+      <div class="card"><h3>Institutional Anchors</h3><p>Liberia Land Authority (LLA) · Department of Lands, Surveys &amp; Cartography (DLSC) · LISGIS · Lake Piso Solutions · University of Liberia GITA Center.</p></div>
+    </div>
+    <h2 class="section-hd">Development Phases</h2>
+    <div class="phases">
+      <div class="phase active"><div class="phase-num">01</div><h4>System Setup</h4><ul><li>Portal deployment</li><li>Domain &amp; hosting</li><li>GeoNode + GeoServer</li><li>PostGIS database</li></ul></div>
+      <div class="phase"><div class="phase-num">02</div><h4>Data Integration</h4><ul><li>DEM / LiDAR tiles</li><li>Satellite imagery WMS</li><li>Geodetic control layer</li><li>Roads / hydro / admin</li></ul></div>
+      <div class="phase"><div class="phase-num">03</div><h4>Demo Interface</h4><ul><li>OneMap branding</li><li>Layer switcher</li><li>Metadata viewer</li><li>Public viewer</li></ul></div>
+    </div>
+  </div>
+  <aside>
+    <div class="sidebar-card"><div class="sidebar-card-hdr">📊 Portal Statistics</div><div class="sidebar-card-body">
+      <div class="stat-row"><span class="label">Geodetic Monuments</span><span class="val">27</span></div>
+      <div class="stat-row"><span class="label">Counties Covered</span><span class="val">11/15</span></div>
+      <div class="stat-row"><span class="label">Bomi Buildings</span><span class="val">27,897</span></div>
+      <div class="stat-row"><span class="label">Bomi Road Segments</span><span class="val">2,449</span></div>
+      <div class="stat-row"><span class="label">LLA-CORS Active</span><span class="val">Yes</span></div>
+      <div class="stat-row"><span class="label">Datum</span><span class="val">WGS84</span></div>
+    </div></div>
+    <div class="sidebar-card"><div class="sidebar-card-hdr">🔗 Quick Links</div><div class="sidebar-card-body">
+      <a href="pages/lgref.html" class="btn btn-primary btn-block" style="display:block;padding:10px;text-align:center;margin-bottom:8px;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;background:var(--navy);color:#fff;">Geodetic Monument Viewer</a>
+      <a href="pages/lgmap.html" class="btn btn-primary btn-block" style="display:block;padding:10px;text-align:center;margin-bottom:8px;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;background:#1a7a3a;color:#fff;">Bomi County Map Viewer</a>
+      <a href="pages/participate.html" style="display:block;padding:10px;text-align:center;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;border:2px solid var(--navy);color:var(--navy);">Submit Data / Participate</a>
+    </div></div>
+    <div class="sidebar-card"><div class="sidebar-card-hdr">📰 News &amp; Events</div><div class="sidebar-card-body">
+      <div class="news-item"><div class="news-date">Mar 2026</div><p>LGREF-LIDP-2026-001 published — 27 geodetic monuments documented.</p></div>
+      <div class="news-item"><div class="news-date">Feb 2026</div><p>LMK Geospatial presents at National Infrastructure Conference, Ganta.</p></div>
+      <div class="news-item"><div class="news-date">Nov 2024</div><p>SLRB/LLA licenses 34 new surveyors — 50% increase in Liberia's licensed surveyor pool.</p></div>
+      <div class="news-item"><div class="news-date">2024</div><p>LLA-CORS station operational at Fendell Campus — first confirmed CORS anchor in Liberia.</p></div>
+    </div></div>
+  </aside>
+</div>
+
+<!-- PARTNERS -->
+<div class="partners-strip">
+  <div class="partner-logos">
+    <h4>Institutional Partners &amp; Data Sources</h4>
+    <div class="logos-row">
+      <div class="pbox">LLA</div><div class="pbox">DLSC</div><div class="pbox">LISGIS</div>
+      <div class="pbox">Lake Piso Solutions</div><div class="pbox">LIBERIAIDP.NET</div>
+      <div class="pbox">UL · GITA</div><div class="pbox">LMK Geospatial</div><div class="pbox">World Bank · LLAP</div>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="js/shared.js"></script>
+<script>injectHeader('.');injectFooter('.');</script>
+</body></html>
