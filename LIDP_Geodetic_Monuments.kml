@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"
+     xmlns:gx="http://www.google.com/kml/ext/2.2">
+<Document>
+  <name>LIDP Geodetic Control Monuments — Liberia</name>
+  <description>27 geodetic monuments from the Liberia Infrastructure Data Portal (liberiaidp.net/monuments). Source: LGREF-LIDP-2026-001. Data custodian: Lake Piso Solutions (LPS). Coordinate system: WGS84 geographic (EPSG:4326). Heights are ellipsoidal metres.</description>
+  <open>1</open>
+  <Style id="style_CORS">
+    <IconStyle>
+      <color>ff00d7ff</color>
+      <scale>1.4</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/star.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ff00d7ff</color><scale>1.1</scale></LabelStyle>
+    <BalloonStyle>
+      <bgColor>ff1a1a1a</bgColor>
+      <textColor>ffffffff</textColor>
+    </BalloonStyle>
+  </Style>
+  <Style id="style_Montserrado">
+    <IconStyle>
+      <color>ff0000ff</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ff0000ff</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Bomi">
+    <IconStyle>
+      <color>ff00aaff</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ff00aaff</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Nimba">
+    <IconStyle>
+      <color>ff00ff00</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ff00ff00</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Lofa">
+    <IconStyle>
+      <color>ffff0000</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ffff0000</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Bong">
+    <IconStyle>
+      <color>ff00ffff</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ff00ffff</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Grand_Bassa">
+    <IconStyle>
+      <color>ffff00ff</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ffff00ff</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Cape_Mount">
+    <IconStyle>
+      <color>ff00ffaa</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ff00ffaa</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Gedeh">
+    <IconStyle>
+      <color>ff8800ff</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ff8800ff</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_River_Gee">
+    <IconStyle>
+      <color>ff0088ff</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ff0088ff</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Margibi">
+    <IconStyle>
+      <color>ffaaffaa</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ffaaffaa</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="style_Sinoe">
+    <IconStyle>
+      <color>ffff8800</color>
+      <scale>1.0</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><color>ffff8800</color><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Folder id="county_Bomi">
+    <name>Bomi County (2 monuments)</name>
+    <open>0</open>
+    <Placemark id="mon_18">
+      <name>ID 18 — Weasua Hospital</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>18</td></tr>
+      <tr><td><b>County</b></td><td>Bomi</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>—</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Weasua Hospital</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>7.318945°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.506599°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>164.3097 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>809,285.970</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>333,691.430</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CVF8F9V+H9C">6CVF8F9V+H9C</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Bomi</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.506599,7.318945,164.3097</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_25">
+      <name>ID 25 — Dewey High School</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>25</td></tr>
+      <tr><td><b>County</b></td><td>Bomi</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Tubmanburg</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Dewey High School</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.866848°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.827710°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>69.9838 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>759,414.610</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>298,037.360</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRFV58C+PWM">6CRFV58C+PWM</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Bomi</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.827710,6.866848,69.9838</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Bong">
+    <name>Bong County (1 monument)</name>
+    <open>0</open>
+    <Placemark id="mon_17">
+      <name>ID 17 — Admin Building</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>17</td></tr>
+      <tr><td><b>County</b></td><td>Bong</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Gbarnga</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Admin Building</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>7.001247°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>9.472037°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>246.3453 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>773,912.940</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>447,862.630</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CVG2G2H+F5W">6CVG2G2H+F5W</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Bong</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-9.472037,7.001247,246.3453</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Cape_Mount">
+    <name>Cape Mount County (1 monument)</name>
+    <open>0</open>
+    <Placemark id="mon_13">
+      <name>ID 13 — Mano River Bridge</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>13</td></tr>
+      <tr><td><b>County</b></td><td>Cape Mount</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Bo Waterside</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Mano River Bridge</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>7.012164°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>11.375083°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>10.0815 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>775,757.750</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>237,602.980</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CVC2J6F+VX7">6CVC2J6F+VX7</a></td></tr>
+      <tr><td><b>What3Words</b></td><td><a href="https://what3words.com/rewarm.stores.throttles">///rewarm.stores.throttles</a></td></tr>
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Cape_Mount</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-11.375083,7.012164,10.0815</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Gedeh">
+    <name>Gedeh County (1 monument)</name>
+    <open>0</open>
+    <Placemark id="mon_15">
+      <name>ID 15 — Admin Building</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>15</td></tr>
+      <tr><td><b>County</b></td><td>Gedeh</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Zwedru</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Admin Building</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.060866°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>8.133817°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>208.1135 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>670,009.390</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>595,852.890</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRH3V68+8FV">6CRH3V68+8FV</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Gedeh</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.133817,6.060866,208.1135</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Grand_Bassa">
+    <name>Grand Bassa County (1 monument)</name>
+    <open>0</open>
+    <Placemark id="mon_19">
+      <name>ID 19 — Admin Building</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>19</td></tr>
+      <tr><td><b>County</b></td><td>Grand Bassa</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Buchanan</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Admin Building</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>5.885525°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.036174°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>12.0190 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>650,656.590</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>385,297.370</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CQFVXP7+6G4">6CQFVXP7+6G4</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Grand_Bassa</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.036174,5.885525,12.0190</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Lofa">
+    <name>Lofa County (2 monuments)</name>
+    <open>0</open>
+    <Placemark id="mon_21">
+      <name>ID 21 — Doba Junction</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>21</td></tr>
+      <tr><td><b>County</b></td><td>Lofa</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Kialima</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Doba Junction</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>8.449814°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.250732°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>488.3125 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>934,246.940</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>362,315.080</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CWFCPXX+WPC">6CWFCPXX+WPC</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Lofa</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.250732,8.449814,488.3125</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_22">
+      <name>ID 22 — Admin Building</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>22</td></tr>
+      <tr><td><b>County</b></td><td>Lofa</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Vonjima</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Admin Building</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>8.420113°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>9.750130°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>543.9268 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>930,821.600</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>417,420.890</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CWGC6CX+2WX">6CWGC6CX+2WX</a></td></tr>
+      <tr><td><b>Notes</b></td><td>Highest elevation</td></tr>
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Lofa</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-9.750130,8.420113,543.9268</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Margibi">
+    <name>Margibi County (1 monument)</name>
+    <open>0</open>
+    <Placemark id="mon_20">
+      <name>ID 20 — (not encoded)</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>20</td></tr>
+      <tr><td><b>County</b></td><td>Margibi</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>—</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>(not encoded)</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.534476°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.343958°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>92.6355 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>722,485.610</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>351,402.800</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRFGMM4+QCV">6CRFGMM4+QCV</a></td></tr>
+      <tr><td><b>Notes</b></td><td>Monument not yet encoded</td></tr>
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Margibi</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.343958,6.534476,92.6355</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Montserrado">
+    <name>Montserrado County (14 monuments)</name>
+    <open>0</open>
+    <Placemark id="mon_31">
+      <name>ID 31 — LLA-CORS Station</name>
+      <description><![CDATA[
+    <p style="background:#d4af37;color:#000;padding:4px;font-weight:bold;border-radius:4px">⭐ LLA-CORS ANCHOR STATION — Primary LGR Reference Point</p>
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>31</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Fendell Campus</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>LLA-CORS Station</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.380694°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.619145°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>30.5818 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>705,568.870</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>320,914.970</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF99JJ+78H">6CRF99JJ+78H</a></td></tr>
+      <tr><td><b>Notes</b></td><td>LGR anchor CORS - primary geodetic station</td></tr>
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_CORS</styleUrl>
+      <visibility>1</visibility>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.619145,6.380694,30.5818</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_32">
+      <name>ID 32 — Masonic Temple</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>32</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Monrovia</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Masonic Temple</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.318398°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.814002°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>65.7774 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>698,750.830</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>299,332.050</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF859P+995">6CRF859P+995</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.814002,6.318398,65.7774</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_33">
+      <name>ID 33 — NPA Junction</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>33</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Monrovia</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>NPA Junction</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.337619°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.792681°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>1.9082 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>700,868.460</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>301,698.700</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF86Q4+2WW">6CRF86Q4+2WW</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.792681,6.337619,1.9082</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_34">
+      <name>ID 34 — St. Paul Bridge</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>34</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Duala</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>St. Paul Bridge</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.393557°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.783220°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>7.0226 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>707,051.450</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>302,766.980</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF96V8+CPC">6CRF96V8+CPC</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.783220,6.393557,7.0226</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_35">
+      <name>ID 35 — Sports Field</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>35</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Barnesville Est</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Sports Field</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.359631°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.740872°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>4.0371 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>703,283.350</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>307,439.610</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF9755+VM2">6CRF9755+VM2</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.740872,6.359631,4.0371</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_36">
+      <name>ID 36 — Omega Tower</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>36</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>—</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Omega Tower</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.310163°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.657628°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>5.3821 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>697,782.490</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>316,632.500</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF886R+3W9">6CRF886R+3W9</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.657628,6.310163,5.3821</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_37">
+      <name>ID 37 — Ministry of Health</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>37</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Old Congo Town</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Ministry of Health</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.263015°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.714996°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>18.7943 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>692,588.850</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>310,267.490</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF777P+622">6CRF777P+622</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.714996,6.263015,18.7943</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_38">
+      <name>ID 38 — Wells Hairston HS</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>38</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Monrovia</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Wells Hairston HS</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.315017°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.809737°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>10.1099 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>698,375.300</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>299,802.740</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF858R+242">6CRF858R+242</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.809737,6.315017,10.1099</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_39">
+      <name>ID 39 — Tubman High School</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>39</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Sinkor</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Tubman High School</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.297633°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.781405°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>8.3957 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>696,441.920</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>302,931.240</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF76X9+3C5">6CRF76X9+3C5</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.781405,6.297633,8.3957</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_40">
+      <name>ID 40 — Ministry Mines &amp; Energy</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>40</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Monrovia</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Ministry Mines &amp; Energy</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.304553°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.798046°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>9.6232 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>697,213.500</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>301,092.440</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF8632+RQG">6CRF8632+RQG</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.798046,6.304553,9.6232</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_41">
+      <name>ID 41 — Town Hall</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>41</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Dixville</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Town Hall</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.374989°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.740174°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>11.3934 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>704,981.530</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>307,522.600</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF97F5+XWW">6CRF97F5+XWW</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.740174,6.374989,11.3934</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_42">
+      <name>ID 42 — Oscar Road</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>42</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Fendell</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Oscar Road</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.379601°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.617087°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>21.4643 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>705,447.290</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>321,142.300</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF99HM+R5V">6CRF99HM+R5V</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.617087,6.379601,21.4643</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_43">
+      <name>ID 43 — Town Hall</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>43</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Brewersville</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Town Hall</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.425548°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.784282°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>16.4127 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>710,589.900</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>302,661.800</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRFC6G8+678">6CRFC6G8+678</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.784282,6.425548,16.4127</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_44">
+      <name>ID 44 — Police Station</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>44</td></tr>
+      <tr><td><b>County</b></td><td>Montserrado</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Johnsonville</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Police Station</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.363954°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>10.686546°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>16.3140 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>703,741.480</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>313,452.000</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRF9877+H9P">6CRF9877+H9P</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Montserrado</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-10.686546,6.363954,16.3140</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Nimba">
+    <name>Nimba County (2 monuments)</name>
+    <open>0</open>
+    <Placemark id="mon_14">
+      <name>ID 14 — Memorial High School</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>14</td></tr>
+      <tr><td><b>County</b></td><td>Nimba</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Tapita</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Memorial High School</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>6.500452°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>8.860726°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>253.1554 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>718,528.210</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>515,398.730</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CRHG42Q+5PJ">6CRHG42Q+5PJ</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Nimba</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.860726,6.500452,253.1554</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark id="mon_23">
+      <name>ID 23 — Nimba University</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>23</td></tr>
+      <tr><td><b>County</b></td><td>Nimba</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Sanniquellie</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Nimba University</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>7.352733°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>8.716796°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>442.0103 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>812,752.470</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>531,256.170</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CVH973M+37W">6CVH973M+37W</a></td></tr>
+      
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Nimba</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.716796,7.352733,442.0103</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_River_Gee">
+    <name>River Gee County (1 monument)</name>
+    <open>0</open>
+    <Placemark id="mon_16">
+      <name>ID 16 — Cell Tower</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>16</td></tr>
+      <tr><td><b>County</b></td><td>River Gee</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Krohnwodoke</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>Cell Tower</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>4.867417°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>7.618980°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>133.8782 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>538,165.400</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>653,137.120</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CPJV98J+XC6">6CPJV98J+XC6</a></td></tr>
+      <tr><td><b>Notes</b></td><td>Southeasternmost monument</td></tr>
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_River_Gee</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-7.618980,4.867417,133.8782</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder id="county_Sinoe">
+    <name>Sinoe County (1 monument)</name>
+    <open>0</open>
+    <Placemark id="mon_24">
+      <name>ID 24 — (not encoded)</name>
+      <description><![CDATA[
+    
+    <table border="0" cellpadding="4" style="font-family:Arial,sans-serif;font-size:13px;width:340px">
+      <tr><td><b>Monument ID</b></td><td>24</td></tr>
+      <tr><td><b>County</b></td><td>Sinoe</td></tr>
+      <tr><td><b>Town / Locality</b></td><td>Greenville</td></tr>
+      <tr><td><b>Reference Structure</b></td><td>(not encoded)</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Latitude (DD)</b></td><td>5.024643°N</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Longitude (DD)</b></td><td>9.050131°W</td></tr>
+      <tr style="background:#f0f0f0"><td><b>Height (m)</b></td><td>8.0447 m</td></tr>
+      <tr><td><b>LGR Northing (m)</b></td><td>555,388.520</td></tr>
+      <tr><td><b>LGR Easting (m)</b></td><td>494,442.950</td></tr>
+      <tr><td><b>Plus Code</b></td><td><a href="https://plus.codes/6CQG2WFX+VW5">6CQG2WFX+VW5</a></td></tr>
+      <tr><td><b>Notes</b></td><td>Monument not yet encoded</td></tr>
+    </table>
+    <p style="font-size:11px;color:#888">Source: LIDP liberiaidp.net/monuments | LGREF-LIDP-2026-001</p>
+    ]]></description>
+      <styleUrl>#style_Sinoe</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-9.050131,5.024643,8.0447</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+</Document>
+</kml>
