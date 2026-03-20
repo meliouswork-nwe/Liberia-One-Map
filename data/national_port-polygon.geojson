@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "port-polygon",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "NAME": null, "NAME_EN": null, "OPERATOR": null, "OSM_TYPE": "way", "OSM_ID": 296697502 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -10.7386307, 6.4149837 ], [ -10.7386616, 6.4148255 ], [ -10.7380413, 6.414741 ], [ -10.7380312, 6.414931 ], [ -10.7386307, 6.4149837 ] ] ] ] } }
+]
+}

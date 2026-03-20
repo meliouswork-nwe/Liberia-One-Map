@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "pipeline-line",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "NAME": null, "NAME_EN": null, "SUBSTANCE": null, "LOCATION": null, "OPERATOR": null, "DIAMETER": null, "PRESSURE": null, "CAPACITY": null, "OSM_TYPE": "way", "OSM_ID": 296876822 }, "geometry": { "type": "LineString", "coordinates": [ [ -10.8009761, 6.3419889 ], [ -10.8013576, 6.3413414 ], [ -10.8017067, 6.3407585 ], [ -10.8019075, 6.3404377 ], [ -10.8021244, 6.3400921 ], [ -10.8023581, 6.3397046 ], [ -10.8025941, 6.3392967 ], [ -10.8030587, 6.3385023 ], [ -10.8033396, 6.338065 ] ] } },
+{ "type": "Feature", "properties": { "NAME": "St. Paul", "NAME_EN": "St. Paul River", "SUBSTANCE": null, "LOCATION": null, "OPERATOR": null, "DIAMETER": null, "PRESSURE": null, "CAPACITY": null, "OSM_TYPE": "way", "OSM_ID": 695980235 }, "geometry": { "type": "LineString", "coordinates": [ [ -10.6511345, 6.495898 ], [ -10.6518453, 6.4960968 ] ] } }
+]
+}
