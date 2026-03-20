@@ -991,12 +991,12 @@ const DATA_REGISTRY = {
     label: "County Boundaries (National)",
     group: "LGMAP",
     status: "live",
-    description: "All 15 Liberia county boundaries. Source: OCHA COD-AB · LISGIS (Liberia Institute of Statistics and Geo-Information Services) · ITOS/USAID. Valid 4 November 2019. Authoritative for government, UN, World Bank, and donor use.",
+    description: "All 15 Liberia county boundaries. Source: OCHA COD-AB · LISGIS · ITOS/USAID. Valid 4 November 2019. Loaded from 15 individual GeoJSON files in the data/ folder.",
     source: "HDX / OCHA COD-AB — LISGIS · ITOS/USAID",
-    format: "GeoJSON",
+    format: "GeoJSON (15 files)",
     features: 15,
-    updated: "4 November 2019",
-    url: "data/liberia_counties_HDX.geojson"
+    updated: "4 November 2019"
+    // No url: property — loadLayer('admin') fetches all 15 files directly
   },
   roads_national: {
     label: "Roads (National)",
@@ -1429,50 +1429,81 @@ function hideLoading() {
 
 async function loadLayer(key) {
   const reg = DATA_REGISTRY[key];
-  if (!reg || !reg.url) return;
-  showLoading(`Loading ${reg.label}…`);
+  if (key !== 'admin' && (!reg || !reg.url)) return;
+  showLoading(`Loading ${reg ? reg.label : 'County Boundaries'}…`);
   try {
-    const r = await fetch(reg.url);
-    const gj = await r.json();
     let layer;
+
     if (key === 'admin') {
-      // All-county boundaries — dark navy dashed outline, no fill
-      layer = L.geoJSON(gj, {
-        style: {
-          color:     '#0d1f35',   // dark navy
-          weight:    1.5,         // 1.5pt
-          fill:      false,
-          opacity:   0.9,
-          dashArray: '8,5'        // dashed
-        },
-        onEachFeature: (f, l) => {
-          const p    = f.properties;
-          const name = p.adm1_name || '—';
-          const code = p.adm1_pcode || '—';
-          const area = p.area_sqkm ? Number(p.area_sqkm).toLocaleString() + ' km²' : '—';
-          const clat = p.center_lat || '';
-          const clon = p.center_lon || '';
-          // County name label — permanent, centred
-          l.bindTooltip(name, {
-            permanent:  true,
-            direction:  'center',
-            className:  'county-label',
-            opacity:    1
-          });
-          // Click popup
-          l.bindPopup(
-            `<div class="popup-inner">
-              <h4>${name} County</h4>
-              <div class="popup-row"><span class="popup-key">P-Code</span><span class="popup-val">${code}</span></div>
-              <div class="popup-row"><span class="popup-key">Area</span><span class="popup-val">${area}</span></div>
-              <div class="popup-row"><span class="popup-key">Source</span><span class="popup-val">OCHA COD-AB · LISGIS</span></div>
-              <div class="popup-row"><span class="popup-key">Valid</span><span class="popup-val">${p.valid_on || '2019-11-04'}</span></div>
-              ${clat && clon ? gmapsBtn(clat, clon, 10) : ''}
-            </div>`,
-            { maxWidth: 260 }
-          );
+      // ── All-county toggle — fetch all 15 individual boundary files in parallel ──
+      const COUNTY_KEYS = [
+        'bomi','bong','gbarpolu','grand_bassa','grand_cape_mount',
+        'grand_gedeh','grand_kru','lofa','margibi','maryland',
+        'montserrado','nimba','river_cess','river_gee','sinoe'
+      ];
+
+      const COUNTY_STYLE = {
+        color:     '#0d1f35',
+        weight:    1.5,
+        fill:      false,
+        opacity:   0.9,
+        dashArray: '8,5'
+      };
+
+      // Fetch all 15 in parallel — much faster than sequential
+      showLoading('Loading all 15 county boundaries…');
+      const results = await Promise.allSettled(
+        COUNTY_KEYS.map(k =>
+          fetch(`data/boundary_${k}.geojson`).then(r => r.json())
+        )
+      );
+
+      // Merge all successful responses into one combined FeatureCollection
+      const allFeatures = [];
+      results.forEach((result, i) => {
+        if (result.status === 'fulfilled') {
+          const gj = result.value;
+          if (gj.features) allFeatures.push(...gj.features);
+        } else {
+          console.warn(`Failed to load boundary_${COUNTY_KEYS[i]}.geojson`);
         }
       });
+
+      layer = L.geoJSON(
+        { type:'FeatureCollection', features: allFeatures },
+        {
+          style: COUNTY_STYLE,
+          onEachFeature: (f, l) => {
+            const p    = f.properties;
+            const name = p.adm1_name || '—';
+            const code = p.adm1_pcode || '—';
+            const area = p.area_sqkm
+              ? Number(p.area_sqkm).toLocaleString() + ' km²' : '—';
+            const clat = p.center_lat || '';
+            const clon = p.center_lon || '';
+            // Permanent county name label
+            l.bindTooltip(name, {
+              permanent:  true,
+              direction:  'center',
+              className:  'county-label',
+              opacity:    1
+            });
+            // Click popup
+            l.bindPopup(
+              `<div class="popup-inner">
+                <h4>${name} County</h4>
+                <div class="popup-row"><span class="popup-key">P-Code</span><span class="popup-val">${code}</span></div>
+                <div class="popup-row"><span class="popup-key">Area</span><span class="popup-val">${area}</span></div>
+                <div class="popup-row"><span class="popup-key">Source</span><span class="popup-val">OCHA COD-AB · LISGIS</span></div>
+                <div class="popup-row"><span class="popup-key">Valid</span><span class="popup-val">${p.valid_on || '2019-11-04'}</span></div>
+                ${clat && clon ? gmapsBtn(clat, clon, 10) : ''}
+              </div>`,
+              { maxWidth: 260 }
+            );
+          }
+        }
+      );
+
     } else if (key === 'boundary') {
       layer = L.geoJSON(gj,{style:{color:'#c8102e',weight:2.5,fill:false,dashArray:'8,4'}});
     } else if (key === 'roads') {
@@ -1874,7 +1905,8 @@ const TAB_CONTENT = {
     title: '⬇ Downloads',
     html: () => `
       <div class="rp-section-hd">Always Available</div>
-      <div class="dl-row"><div><div class="dl-label">County Boundaries — All 15</div><div class="dl-meta">HDX COD-AB · LISGIS · OCHA · WGS84</div></div><a href="data/liberia_counties_HDX.geojson" download class="dl-btn">Download</a></div>
+      <div class="dl-row"><div><div class="dl-label">County Boundaries — Bomi</div><div class="dl-meta">HDX COD-AB · LISGIS · WGS84</div></div><a href="data/boundary_bomi.geojson" download class="dl-btn">Download</a></div>
+      <div class="dl-row"><div><div class="dl-label">County Boundaries — All 15</div><div class="dl-meta">Individual files in data/ folder · see LGDI tab for links</div></div><button class="dl-btn" onclick="openTab('lgdi',null)">See LGDI</button></div>
       <div class="dl-row"><div><div class="dl-label">Geodetic Monuments GeoJSON</div><div class="dl-meta">All 27 · WGS84 · EPSG:4326</div></div><a href="data/control.geojson" download class="dl-btn">Download</a></div>
       <div class="dl-row"><div><div class="dl-label">Geodetic Monuments KMZ</div><div class="dl-meta">Google Earth ready · labeled</div></div><a href="data/LIDP_Geodetic_Monuments.kmz" download class="dl-btn">Download</a></div>
       <div class="rp-section-hd">Bomi County Pilot Data</div>
