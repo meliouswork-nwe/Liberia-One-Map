@@ -93,6 +93,6 @@ To use `LrOneMap.com` instead of the github.io URL:
 
 ## 📬 Contact
 
-- Author: Matt Elious, ASPRS Emeritus — ME Geospatial Services LLC - matt.elious@gmail.com  
-- Source Data: Lake Piso Solutions — liberiaidp.net  
+- Author/Developer: Matt Elious, ASPRS Emeritus — ME Geospatial Services LLC - matt.elious@gmail.com  
+- Original Source Data: Lake Piso Solutions — liberiaidp.net  
 - Classification: For Official Use Only  
