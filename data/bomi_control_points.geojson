@@ -1,0 +1,101 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "BC01",
+        "lat": 6.99328492,
+        "lon": -10.79307144,
+        "easting": 301919.0,
+        "northing": 773384.0,
+        "elev_m": 103.542,
+        "elev_ft": 339.706,
+        "project": "BomiCo PMO Pilot",
+        "county": "Bomi",
+        "classification": "Bomi PMO Project Survey Control",
+        "coord_system": "WGS84 / UTM Zone 29N (EPSG:32629)",
+        "elev_source": "NextGIS DEM drape \u2014 BomiCo PMO boundary"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -10.79307144,
+          6.99328492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "BC02",
+        "lat": 7.05840772,
+        "lon": -10.89029553,
+        "easting": 291204.0,
+        "northing": 780629.0,
+        "elev_m": 85.762,
+        "elev_ft": 281.37,
+        "project": "BomiCo PMO Pilot",
+        "county": "Bomi",
+        "classification": "Bomi PMO Project Survey Control",
+        "coord_system": "WGS84 / UTM Zone 29N (EPSG:32629)",
+        "elev_source": "NextGIS DEM drape \u2014 BomiCo PMO boundary"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -10.89029553,
+          7.05840772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "BC03",
+        "lat": 7.04413542,
+        "lon": -10.907206,
+        "easting": 289329.0,
+        "northing": 779058.0,
+        "elev_m": 103.686,
+        "elev_ft": 340.177,
+        "project": "BomiCo PMO Pilot",
+        "county": "Bomi",
+        "classification": "Bomi PMO Project Survey Control",
+        "coord_system": "WGS84 / UTM Zone 29N (EPSG:32629)",
+        "elev_source": "NextGIS DEM drape \u2014 BomiCo PMO boundary"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -10.907206,
+          7.04413542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "BC04",
+        "lat": 6.76186619,
+        "lon": -10.97445003,
+        "easting": 281769.0,
+        "northing": 747867.0,
+        "elev_m": 30.081,
+        "elev_ft": 98.69,
+        "project": "BomiCo PMO Pilot",
+        "county": "Bomi",
+        "classification": "Bomi PMO Project Survey Control",
+        "coord_system": "WGS84 / UTM Zone 29N (EPSG:32629)",
+        "elev_source": "NextGIS DEM drape \u2014 BomiCo PMO boundary"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -10.97445003,
+          6.76186619
+        ]
+      }
+    }
+  ]
+}
